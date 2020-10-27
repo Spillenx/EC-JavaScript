@@ -6,9 +6,17 @@ class Model {
         return promise;
     }
 
-    // fetch weather data from openweather API
+    // fetch currencies from exchangerate-api.com
+    async currenciesLoad() {
+        let promise = await fetch('');
+        return promise;
+    }
+
+    // fetch weather data from openweathermap.org
     async weatherLoad() {
         let url = this.weatherURL();
+        //url = url.substring(0, url.length);
+        console.log(url);
         let promise = await fetch(url);
         return promise;
     }
@@ -19,17 +27,17 @@ class Model {
         // ow_API_Key = 976ba469ccfcae3180d6448ff913c400
         // api.openweathermap.org/data/2.5/group?id={id,..,id}&appid={API key}
 
-        let urlBASE = 'api.openweathermap.org/data/2.5/group?id=';
-        let urlKEYS = '&appid=976ba469ccfcae3180d6448ff913c400';
-        let urlUNIT = '&units=metric';
-        // let urlLANG = '&lang=SE';
+        let url_BASE = 'htps://api.openweathermap.org/data/2.5/group?id=';
+        let url_KEYS = '&appid=976ba469ccfcae3180d6448ff913c400';
+        let url_UNIT = '&units=metric';
+        // let url_LANG = '&lang=SE';
 
         for(let i = 0; i < countries.length; i++) {
-            urlBASE += countries[i].id + ',';
+            url_BASE += countries[i].id + ',';
         }
-        let url = urlBASE + urlKEYS + urlUNIT;
-        console.log(url);
-        //return url;
+        let url = url_BASE + url_KEYS + url_UNIT;
+        //console.log(url);
+        return url;
     }
 
 }
