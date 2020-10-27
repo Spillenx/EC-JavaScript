@@ -1,0 +1,37 @@
+[
+    {
+        "city": "London",
+        "country": "Great Britain",
+        "currency": "GBP"
+    },
+    {
+        "city": "Madrid",
+        "country": "Spain",
+        "currency": "EUR"
+    },
+    {
+        "city": "Rom",
+        "country": "Italy",
+        "currency": "EUR"
+    },
+    {
+        "city": "Paris",
+        "country": "France",
+        "currency": "EUR"
+    },
+    {
+        "city": "New York",
+        "country": "USA",
+        "currency": "USD"
+    },
+    {
+        "city": "Sydney",
+        "country": "Australia",
+        "currency": "AUD"
+    },
+    {
+        "city": "Montreal",
+        "country": "Canada",
+        "currency": "CAD"
+    }
+]

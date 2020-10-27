@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Weather App</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script src="model/model.js"></script>
+    <script src="view/view.js"></script>
+    <script src="controller/controller.js"></script>
+    <script>
+
+        var Current = {};
+        const model = new Model();
+        const view = new View();
+        const controller = new Controller();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            controller.init();
+        })
+
+    </script>
+</head>
+<body>
+    <head></head>
+    <nav></nav>
+    <main>
+        <div id="main-container"></div>
+    </main>
+    <footer></footer>
+</body>
+</html>
