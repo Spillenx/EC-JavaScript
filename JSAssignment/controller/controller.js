@@ -3,14 +3,17 @@ class Controller {
     constructor() {}
 
     init() {
+        this.countriesLoad();
+        this.currenciesLoad();
+        this.weatherLoad();
+    }
+
+    countriesLoad() {
         model.countriesLoad()
         .then(response => response.json())
         .then(function(data) {   
             countries = data;
             console.log(countries);
-            view.countriesShow(countries);
-            controller.currenciesLoad();
-            controller.weatherLoad();
         })
         .catch(error => alert(error))
     }
