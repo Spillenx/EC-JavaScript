@@ -1,35 +1,42 @@
 [
     {
+        "id": "2643743",
         "city": "London",
         "country": "Great Britain",
         "currency": "GBP"
     },
     {
+        "id": "3117735",
         "city": "Madrid",
         "country": "Spain",
         "currency": "EUR"
     },
     {
-        "city": "Rom",
+        "id": "3169070",
+        "city": "Rome",
         "country": "Italy",
         "currency": "EUR"
     },
     {
+        "id": "2988507",
         "city": "Paris",
         "country": "France",
         "currency": "EUR"
     },
     {
+        "id": "5128581",
         "city": "New York",
         "country": "USA",
         "currency": "USD"
     },
     {
+        "id": "2147714",
         "city": "Sydney",
         "country": "Australia",
         "currency": "AUD"
     },
     {
+        "id": "6077243",
         "city": "Montreal",
         "country": "Canada",
         "currency": "CAD"

@@ -9,7 +9,9 @@ class Controller {
             countries = data;
             console.log(countries);
             view.countriesShow(countries);
+            model.weatherURL();
         })
         .catch(error => alert(error))
     }
+
 }
