@@ -69,6 +69,7 @@ class Controller {
             url_BASE += countries[i].id + ',';
         }
         url_BASE = url_BASE.substring(0, url_BASE.length -1);
+        
         let url = url_BASE + url_KEYS + url_UNIT;
         return url;
     }

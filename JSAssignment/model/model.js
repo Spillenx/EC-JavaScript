@@ -7,6 +7,7 @@ class Model {
     }
 
     // fetches currencies from exchangerate-api.com
+    // param String url
     async currenciesLoad(url) {
         //let url = this.currenciesUrl();
         console.log(url);
@@ -15,12 +16,12 @@ class Model {
     }
 
     // fetches weather data from openweathermap.org
+    // param String url
     async weatherLoad(url) {
         //let url = this.weatherURL();
         //url = url.substring(0, url.length);
         console.log(url);
         let promise = await fetch(url);
         return promise;
-    }
-    
+    }   
 }
