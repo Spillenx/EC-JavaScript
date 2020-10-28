@@ -4,36 +4,52 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Weather App</title>
+    <title>JavaScript - Final Assignment</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <script src="model/model.js"></script>
     <script src="view/view.js"></script>
     <script src="controller/controller.js"></script>
+    <script src="js/helper.js"></script>
     <script>
 
         var countries = {};
         var weather = {};
-        var currencies = {};
+        var exchangeRates = {};
         
         const model = new Model();
         const view = new View();
         const controller = new Controller();
 
         document.addEventListener('DOMContentLoaded', function() {
+            
+            document.getElementById('city-list').addEventListener("click", function() {
+                let cityIndex = document.getElementById("city-list").value;
+                //console.log(cityIndex);
+                controller.cityShow(cityIndex);
+            });
+            
             controller.init();
-        })
+        });
 
     </script>
 </head>
 <body>
-    <head></head>
+    <head>
+        <h1>JavaScript - Final Assignment</h1>
+    </head>
     <nav>
-
+        <label>Choose city </label>
+        <select id="city-list"></select>
     </nav>
     <main>
-        <div id="main-container">
+        <div id="city-container">
+            <div id="selected-city">
+                <div id="selected-weather"></div>
+            </div>
         </div>
     </main>
-    <footer></footer>
+    <footer>
+        <p>Made by Peter Sillén, student in JavaScriptutveckling at EC Utbildning</p>
+    </footer>
 </body>
 </html>
