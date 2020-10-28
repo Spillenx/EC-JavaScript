@@ -21,23 +21,4 @@ class View {
         Helper.setHtml('selected-city', html);
         Helper.show('selected-city');
     }
-    
-    showWeather(id) {
-        //"http://openweathermap.org/img/wn/" + icon + "@2x.png"
-        let html = '';
-        for(let i = 0; i < weather.list.length; i++) {
-            if(id == weather[i].city.id) {
-                html += '<img src="http://openweathermap.org/img/wn/' + weather.list[i].weather[0].icon + '@2x.png">';
-
-                /*
-                for(let j = 0; j < weather.list.length; j++) {
-                    html += '<img src="http://openweathermap.org/img/wn/' + weather.list[j].weather[0].icon + '@2x.png">';
-                }
-                */
-            }
-        }
-
-        Helper.setHtml('selected-weather', html);
-        Helper.show('selected-weather');
-    }
 }
