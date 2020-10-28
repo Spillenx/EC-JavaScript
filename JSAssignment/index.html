@@ -21,8 +21,15 @@
         const controller = new Controller();
 
         document.addEventListener('DOMContentLoaded', function() {
+            
+            document.getElementById('city-list').addEventListener("click", function() {
+                let cityIndex = document.getElementById("city-list").value;
+                //console.log(cityIndex);
+                controller.cityShow(cityIndex);
+            });
+            
             controller.init();
-        })
+        });
 
     </script>
 </head>

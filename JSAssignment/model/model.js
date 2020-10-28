@@ -9,7 +9,7 @@ class Model {
     // fetches currencies from exchangerate-api.com
     // param String url
     async currenciesLoad() {
-        let url = this.currenciesUrl();
+        let url = this.currenciesURL();
         //console.log(url);
         let promise = await fetch(url);
         return promise;
@@ -24,8 +24,8 @@ class Model {
         return promise;
     }
     
-    // genereates and returns url forexchangerate API
-    currenciesUrl() {
+    // genereates and returns url for exchangerate API
+    currenciesURL() {
 
         // key = 86ac07a01d57484529525c6c
         // https://v6.exchangerate-api.com/v6/YOUR-API-KEY/latest/SEK

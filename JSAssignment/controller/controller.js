@@ -45,4 +45,8 @@ class Controller {
         })
         .catch(error => alert(error))
     }
+
+    cityShow(cityIndex) {
+        view.showCity(cityIndex);
+    }
 }
