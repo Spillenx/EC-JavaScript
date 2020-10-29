@@ -8,11 +8,14 @@ class View {
         Helper.setHtml('city-list', cityList);
     }
 
-    selectCurrency(currency) {
-        let currencyList = '<option value="0">Currency</option>';
-        for (let i = 0; i < countries.length; i++) {
-            currencyList += '<option value="' + i + '">' + countries[i].currency + '</option>';
-        }   
+    selectCurrency() {
+        let currencyList = '';
+        for (let i = 0; i < currencyKeys.length; i++) {
+            //if(currencyKeys[i] != countries[cityIndex].currency) {
+                currencyList += '<option value="' + i + '">' + currencyKeys[i] + '</option>';
+            //} 
+        }
+        
         Helper.setHtml('exchange-from', currencyList);
     }
 
@@ -27,7 +30,9 @@ class View {
         this.showWeather(cityIndex);
         this.showExchange(cityIndex);
 
+        Helper.show('city-container');
         Helper.show('exchange-container');
+        Helper.show('weather-container');
     }
 
     showWeather(cityIndex) {
