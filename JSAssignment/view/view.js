@@ -10,17 +10,12 @@ class View {
 
     selectCurrency() {
         let currencyList = '';
-
-        for (let i = 0; i < countries[i].length; i++) {
-            if(i > 0 && (countries[i].currency != countries[i-1].currency)) {
-                currencyList += '<option value="' + i + '">' + countries[i].currency + '</option>';
-            }
+        for (let i = 0; i < currencyKeys.length; i++) {
+            //if(currencyKeys[i] != countries[cityIndex].currency) {
+                currencyList += '<option value="' + i + '">' + currencyKeys[i] + '</option>';
+            //} 
         }
-        /*
-        for (let i = 0; i < exchangeRates.conversion_rates.length; i++) {
-            currencyList += '<option value="' + i + '">' + exchangeRates.conversion_rates + '</option>'; 
-        }
-        */
+        
         Helper.setHtml('exchange-from', currencyList);
     }
 
