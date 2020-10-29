@@ -29,7 +29,7 @@
 
             document.getElementById('exchange-from').addEventListener("click", function() {
                 let currency = document.getElementById("exchange-from").value;
-                view.selectCurrency(currency);
+                controller.currencyExchange(currency);
             });
 
             controller.init();
@@ -47,15 +47,15 @@
     </nav>
     <main>
         <div class="grid-container" display=></div>
-            <div id="city-container" class="grid-item">
-                <div id="currency-exchange"></div>
-            </div>
-            <div id="weather-container" class="grid-item"></div>
-            <div id="exchange-container" class="grid-item"style="display: none;">
+            <div id="city-container" class="grid-item" style="display: none"></div>
+            <div id="weather-container" class="grid-item" style="display: none"></div>
+            <div id="exchange-container" class="grid-item" style="display: none">
                 <p>
                     <label>Exchange: </label>
                     <input type="text" id="amount" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                     <select id="exchange-from"></select>
+                    <button id="exhange-currency">Exchange</button>
+                    <br><br>
                     <label>Recieve: </label>
                     <span id="recieved-amount"></span> 
                     <span id="current-currency"></span>

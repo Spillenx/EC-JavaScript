@@ -29,6 +29,7 @@ class Controller {
         .then(function(data) {   
             exchangeRates = data;
             console.log(exchangeRates);
+            alert(exchangeRates.conversion_rates)
             view.selectCurrency();
         })
         .catch(error => alert(error))
@@ -50,4 +51,10 @@ class Controller {
     cityShow(cityIndex) {
         view.showCity(cityIndex);
     }
+    
+    // process currency exchange to the currency of the selected city
+    currencyExchange(currency) {
+        //view.selectCurrency(currency);
+    }
+    
 }
