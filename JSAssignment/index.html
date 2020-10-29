@@ -24,27 +24,42 @@
             
             document.getElementById('city-list').addEventListener("click", function() {
                 let cityIndex = document.getElementById("city-list").value;
-                //console.log(cityIndex);
                 controller.cityShow(cityIndex);
             });
-            
+
+            document.getElementById('exchange-from').addEventListener("click", function() {
+                let currency = document.getElementById("exchange-from").value;
+                view.selectCurrency(currency);
+            });
+
             controller.init();
         });
 
     </script>
 </head>
 <body>
-    <head>
-        <h1>JavaScript - Final Assignment</h1>
-    </head>
+    <header>
+        <h1>Peter's Travel Agency</h1>
+    </header>
     <nav>
-        <label>Choose city </label>
+        <label>Where do you want to go? </label>
         <select id="city-list"></select>
     </nav>
     <main>
-        <div id="city-container">
-            <div id="selected-city">
-                <div id="selected-weather"></div>
+        <div class="grid-container" display=></div>
+            <div id="city-container" class="grid-item">
+                <div id="currency-exchange"></div>
+            </div>
+            <div id="weather-container" class="grid-item"></div>
+            <div id="exchange-container" class="grid-item"style="display: none;">
+                <p>
+                    <label>Exchange: </label>
+                    <input type="text" id="amount" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                    <select id="exchange-from"></select>
+                    <label>Recieve: </label>
+                    <span id="recieved-amount"></span> 
+                    <span id="current-currency"></span>
+                </p>
             </div>
         </div>
     </main>

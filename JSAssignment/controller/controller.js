@@ -24,12 +24,12 @@ class Controller {
 
     // loads latest echangerates from exhangerate-api.com and stores it in array exchangeRates
     currenciesLoad() {
-        //let url = this.currenciesUrl();
         model.currenciesLoad()
         .then(response => response.json())
         .then(function(data) {   
             exchangeRates = data;
             console.log(exchangeRates);
+            view.selectCurrency();
         })
         .catch(error => alert(error))
     }
@@ -46,6 +46,7 @@ class Controller {
         .catch(error => alert(error))
     }
 
+    // loads the selected city in the view
     cityShow(cityIndex) {
         view.showCity(cityIndex);
     }

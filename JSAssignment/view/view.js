@@ -1,24 +1,45 @@
 class View {
 
     selectCity() {
-        let cityList = '';
+        let cityList = '<option value="0">Select city</option>';
         for (let i = 0; i < countries.length; i++) {
             cityList += '<option value="' + i + '">' + countries[i].city + '</option>';
         }   
         Helper.setHtml('city-list', cityList);
     }
 
+    selectCurrency(currency) {
+        let currencyList = '<option value="0">Currency</option>';
+        for (let i = 0; i < countries.length; i++) {
+            currencyList += '<option value="' + i + '">' + countries[i].currency + '</option>';
+        }   
+        Helper.setHtml('exchange-from', currencyList);
+    }
+
     showCity(cityIndex) {
-        let html = '';
-        html += 'Country: ' + countries[cityIndex].country + '<br>';
-        html += 'City: ' + countries[cityIndex].city + '<br>';
-        html += 'Currency: ' + countries[cityIndex].currency + '<br>';
+        let htmlCity = '';
+        htmlCity += 'Country: ' + countries[cityIndex].country + '<br>';
+        htmlCity += 'City: ' + countries[cityIndex].city + '<br>';
+        htmlCity += 'Currency: ' + countries[cityIndex].currency + '<br>';
 
+        Helper.setHtml('city-container', htmlCity);
+
+        this.showWeather(cityIndex);
+        this.showExchange(cityIndex);
+
+        Helper.show('exchange-container');
+    }
+
+    showWeather(cityIndex) {
+        let htmlWeather = '';
         //"http://openweathermap.org/img/wn/" + icon + "@2x.png"
-        html += '<img src="http://openweathermap.org/img/wn/' + weather.list[cityIndex].weather[0].icon + '@2x.png"><br>';
-        html += weather.list[cityIndex].main.temp;
+        htmlWeather += '<img src="http://openweathermap.org/img/wn/' + weather.list[cityIndex].weather[0].icon + '@2x.png"><br>';
+        htmlWeather += weather.list[cityIndex].main.temp;
 
-        Helper.setHtml('selected-city', html);
-        Helper.show('selected-city');
+        Helper.setHtml('weather-container', htmlWeather);
+    }
+
+    showExchange(cityIndex) {
+        Helper.setHtml('current-currency', countries[cityIndex].currency);
     }
 }

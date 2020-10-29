@@ -10,7 +10,6 @@ class Model {
     // param String url
     async currenciesLoad() {
         let url = this.currenciesURL();
-        //console.log(url);
         let promise = await fetch(url);
         return promise;
     }
@@ -19,7 +18,6 @@ class Model {
     // param String url
     async weatherLoad() {
         let url = this.weatherURL();
-        //console.log(url);
         let promise = await fetch(url);
         return promise;
     }
@@ -47,7 +45,6 @@ class Model {
         let url_BASE = 'https://api.openweathermap.org/data/2.5/group?id=';
         let url_KEYS = '&appid=976ba469ccfcae3180d6448ff913c400';
         let url_UNIT = '&units=metric';
-        //let url_LANG = '&lang=SE';
     
         for(let i = 0; i < countries.length; i++) {
             url_BASE += countries[i].id + ',';

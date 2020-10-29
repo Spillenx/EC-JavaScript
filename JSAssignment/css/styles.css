@@ -1,0 +1,130 @@
+@media (max-width: 600px) {
+    section {
+        flex-direction: column;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #e8e8e8;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h3, p {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+
+header {
+    display: flex;
+    flex-direction: row;
+    background-color: #3266a8;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    border-bottom: 3px solid black;
+}
+
+nav {
+    display: flex;
+    background-color: #89acc4;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    border-bottom: 3px solid black;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0px 10px;
+}
+
+nav a:hover {background-color: #3266a8;}
+
+nav a:active {background-color: #b8b9ba;}
+
+main {
+    display: flex;
+    background-color: #ebeced;
+    justify-content: space-evenly;
+    border-bottom: 3px solid black;
+}
+
+footer {
+    display: flex;
+    background-color: #89acc4;
+    justify-content: center;
+    color: white;
+    border-bottom: 3px solid black;
+}
+
+.grid-container {
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 1px;
+}
+  
+.grid-item {
+    display: flex;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 20px;
+    border: 1px solid #b8b9ba;
+    
+}
+
+.grid-item img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+article h1 {text-align: center;}
+article img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.contact {
+    display: flex;
+    position: relative;
+    background-color: #ffffff;
+    border: 1px solid #b8b9ba;
+}
+
+.contact > img {
+    float: left;
+    border: 1px solid #000000;
+}
+
+.contact > * > p, ul {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.toptext {
+    position: absolute;
+    top: 0;
+}
+
+.bottomtext {
+    position: absolute;
+    bottom: 0;
+}
+
+table {border-collapse: collapse;}
+
+th {text-align: center;}
+
+td {
+    border: 1px solid #000000;
+    text-align: right;
+    background-color: #ffffff;
+    padding: 5px;
+}
