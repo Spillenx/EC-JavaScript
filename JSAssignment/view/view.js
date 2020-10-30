@@ -26,13 +26,16 @@ class View {
         htmlCity += 'Currency: ' + countries[cityIndex].currency + '<br>';
 
         Helper.setHtml('city-container', htmlCity);
+        Helper.setHtml('current-currency', countries[cityIndex].currency);
 
         this.showWeather(cityIndex);
-        this.showExchange(cityIndex);
+        
+        let amt = '';
+        Helper.setHtml('exchange-amount', amt);
 
         Helper.show('city-container');
-        Helper.show('exchange-container');
         Helper.show('weather-container');
+        Helper.show('exchange-container');
     }
 
     showWeather(cityIndex) {
@@ -44,7 +47,7 @@ class View {
         Helper.setHtml('weather-container', htmlWeather);
     }
 
-    showExchange(cityIndex) {
-        Helper.setHtml('current-currency', countries[cityIndex].currency);
+    showExchange(toAmount) {
+        Helper.setHtml('recieved-amount', toAmount);
     }
 }

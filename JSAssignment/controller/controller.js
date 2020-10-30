@@ -5,7 +5,7 @@ class Controller {
     // starts functions for loading country, currenxy and weather data
     init() {
         this.countriesLoad();
-        this.currenciesLoad();
+        //this.currenciesLoad();
     }
 
     // loads countries from countries.json and stores in array countries
@@ -17,6 +17,7 @@ class Controller {
             countries = data;
             console.log(countries);
             controller.weatherLoad();
+            controller.currenciesLoad();
             view.selectCity();
         })
         .catch(error => alert(error))
@@ -27,9 +28,9 @@ class Controller {
         model.currenciesLoad()
         .then(response => response.json())
         .then(function(data) {   
-            exchangeRates = data;
+            exchangeRates = data.conversion_rates;
             console.log(exchangeRates);
-            currencyKeys = Object.keys(exchangeRates.conversion_rates);
+            currencyKeys = Object.keys(exchangeRates);
             view.selectCurrency();
         })
         .catch(error => alert(error))
@@ -53,7 +54,22 @@ class Controller {
     }
     
     // process currency exchange to the currency of the selected city
-    currencyExchange(currency) {
+    currencyExchange(fromAmount, toCurrency) {
+
+        let toAmount = 0;
+
+        alert(fromAmount);
+        alert(toCurrency);
+
+        //alert(fromAmount, toCurrency)
+        for(let i = 0; i < exchangeRates.length; i++) {
+            if(i == exchangeRates.conversion_rates[toCurrency]) {
+                alert('Banan!')
+                toAmount = fromAmount / exchangeRates[i]; 
+            }
+        }
+
+        view.showExchange(toAmount);
     }
     
 }

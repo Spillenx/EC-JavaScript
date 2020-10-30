@@ -28,9 +28,10 @@
                 controller.cityShow(cityIndex);
             });
 
-            document.getElementById('exchange-from').addEventListener("click", function() {
-                let currency = document.getElementById("exchange-from").value;
-                controller.currencyExchange(currency);
+            document.getElementById("exchange-btn").addEventListener("click", function() {
+                let fromAmount = document.getElementById("exchange-amount").value;
+                let toCurrency = document.getElementById("exchange-from").value;
+                controller.currencyExchange(fromAmount, toCurrency);
             });
 
             controller.init();
@@ -53,9 +54,9 @@
             <div id="exchange-container" class="grid-item" style="display: none">
                 <p>
                     <label>Exchange: </label>
-                    <input type="text" id="amount" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                    <input type="text" id="exchange-amount" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                     <select id="exchange-from"></select>
-                    <button id="exhange-currency">Exchange</button>
+                    <button id="exchange-btn">Exchange</button>
                     <br><br>
                     <label>Recieve: </label>
                     <span id="recieved-amount"></span> 
