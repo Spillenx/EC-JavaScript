@@ -16,6 +16,7 @@
         var weather = {};
         var exchangeRates = {};
         var currencyKeys = {};
+        var cityIndex = 0;
         
         const model = new Model();
         const view = new View();
@@ -24,14 +25,14 @@
         document.addEventListener('DOMContentLoaded', function() {
             
             document.getElementById('city-list').addEventListener("click", function() {
-                let cityIndex = document.getElementById("city-list").value;
+                cityIndex = document.getElementById("city-list").value;
                 controller.cityShow(cityIndex);
             });
 
             document.getElementById("exchange-btn").addEventListener("click", function() {
                 let fromAmount = document.getElementById("exchange-amount").value;
-                let toCurrency = document.getElementById("exchange-from").value;
-                controller.currencyExchange(fromAmount, toCurrency);
+                let fromCurrency = document.getElementById("exchange-from").value;
+                controller.currencyExchange(fromAmount, fromCurrency, cityIndex);
             });
 
             controller.init();

@@ -46,14 +46,6 @@ class Model {
         let url_CITY = '?id=' + cityID;
         let url_KEYS = '&appid=976ba469ccfcae3180d6448ff913c400';
         let url_UNIT = '&units=metric';
-    
-        /*
-        for(let i = 0; i < countries.length; i++) {
-            url_BASE += countries[i].id + ',';
-        }
-        */
-
-        //url_BASE = url_BASE.substring(0, url_BASE.length -1);
         
         let url = url_BASE + url_CITY + url_KEYS + url_UNIT;
         return url;

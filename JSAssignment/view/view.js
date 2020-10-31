@@ -11,7 +11,7 @@ class View {
     selectCurrency() {
         let currencyList = '';
         for (let i = 0; i < currencyKeys.length; i++) {
-            currencyList += '<option value="' + i + '">' + currencyKeys[i] + '</option>';
+            currencyList += '<option value="' + currencyKeys[i] + '">' + currencyKeys[i] + '</option>';
         }
         
         Helper.setHtml('exchange-from', currencyList);
@@ -44,18 +44,15 @@ class View {
 
         var dt = new Date();
         dt.setHours(12,0,0,0);
-        var dayIndex = 6;
+        var dayIndex = 0;
 
         for(let i = 0; i < 5; i++) {
-            //alert(dt)
-            htmlWeather += '<div class="grid-item>"'
             htmlWeather += this.showDay(dt.getDay(dt)) + ' ';
             htmlWeather += dt.getDate(dt) + ' ';
             htmlWeather += this.showMonth(dt.getMonth(dt)) + ' <br>';
-            htmlWeather += '<img src="http://openweathermap.org/img/wn/' + weather.list[dayIndex].weather.icon + '@2x.png"><br>';
-            htmlWeather += 'Weather: ' + weather[dayIndex].list.weather.description + '<br>';
-            htmlWeather += 'Temperature : ' + weather.list[dayIndex].main.temp + '<br><br>';
-            htmlWeather += '</div>'
+            //htmlWeather += '<img src="http://openweathermap.org/img/wn/' + weather.list[dayIndex].weather.icon + '@2x.png"><br>';
+            //htmlWeather += 'Weather: ' + weather[dayIndex].list.weather.description + '<br>';
+            //htmlWeather += 'Temperature : ' + weather.list[dayIndex].main.temp + '<br><br>';
             dayIndex += 8;
             dt.setDate(dt.getDate() + 1)
         }
