@@ -14,10 +14,10 @@ class Model {
         return promise;
     }
 
-    // fetches weather data from openweathermap.org
+    // fetches 5 days forecast weather data from openweathermap.org
     // param String url
-    async weatherLoad() {
-        let url = this.weatherURL();
+    async weatherLoad(cityIndex) {
+        let url = this.weatherURL(cityIndex);
         let promise = await fetch(url);
         return promise;
     }
@@ -37,21 +37,25 @@ class Model {
     }
     
     // generates and returns url for openweather API with ID from all cities in countries.json
-    weatherURL() {
+    weatherURL(cityID) {
     
         // key = 976ba469ccfcae3180d6448ff913c400
         // api.openweathermap.org/data/2.5/group?id={id,..,id}&appid={API key}
     
-        let url_BASE = 'https://api.openweathermap.org/data/2.5/group?id=';
+        let url_BASE = 'https://api.openweathermap.org/data/2.5/forecast';
+        let url_CITY = '?id=' + cityID;
         let url_KEYS = '&appid=976ba469ccfcae3180d6448ff913c400';
         let url_UNIT = '&units=metric';
     
+        /*
         for(let i = 0; i < countries.length; i++) {
             url_BASE += countries[i].id + ',';
         }
-        url_BASE = url_BASE.substring(0, url_BASE.length -1);
+        */
+
+        //url_BASE = url_BASE.substring(0, url_BASE.length -1);
         
-        let url = url_BASE + url_KEYS + url_UNIT;
+        let url = url_BASE + url_CITY + url_KEYS + url_UNIT;
         return url;
     }
 }

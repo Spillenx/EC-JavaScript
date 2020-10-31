@@ -2,10 +2,10 @@ class Controller {
 
     constructor() {}
 
-    // starts functions for loading country, currenxy and weather data
+    // starts functions for loading country and currency data
     init() {
         this.countriesLoad();
-        //this.currenciesLoad();
+        this.currenciesLoad();
     }
 
     // loads countries from countries.json and stores in array countries
@@ -16,8 +16,8 @@ class Controller {
         .then(function(data) {   
             countries = data;
             console.log(countries);
-            controller.weatherLoad();
-            controller.currenciesLoad();
+            //controller.weatherLoad();
+            //controller.currenciesLoad();
             view.selectCity();
         })
         .catch(error => alert(error))
@@ -29,23 +29,24 @@ class Controller {
         .then(response => response.json())
         .then(function(data) {   
             exchangeRates = data.conversion_rates;
-            console.log(exchangeRates);
-            currencyKeys = Object.keys(exchangeRates);
+            //currencyKeys = Object.keys(exchangeRates.conversion_rates);
+            console.log(exchangeRates);    
             view.selectCurrency();
         })
         .catch(error => alert(error))
     }
 
     // loads 5 days weather forecast data from openweathermap.org and stores in array weather
-    weatherLoad() {
-        //let url = this. weatherURL();
-        model.weatherLoad()
+    weatherLoad(cityIndex) {
+        model.weatherLoad(countries[cityIndex].id)
         .then(response => response.json())
         .then(function(data) {   
-            weather = data;
-            console.log(weather);
+            weather.current = data;
+            console.log(weather.current);
         })
         .catch(error => alert(error))
+
+        return weather;
     }
 
     // loads the selected city in the view
@@ -58,18 +59,16 @@ class Controller {
 
         let toAmount = 0;
 
-        alert(fromAmount);
         alert(toCurrency);
+        alert(exchangeRates.length)
 
         //alert(fromAmount, toCurrency)
         for(let i = 0; i < exchangeRates.length; i++) {
             if(i == exchangeRates.conversion_rates[toCurrency]) {
-                alert('Banan!')
                 toAmount = fromAmount / exchangeRates[i]; 
             }
         }
 
         view.showExchange(toAmount);
-    }
-    
+    }   
 }
