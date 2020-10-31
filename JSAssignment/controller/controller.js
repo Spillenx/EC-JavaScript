@@ -2,7 +2,7 @@ class Controller {
 
     constructor() {}
 
-    // starts functions for loading country, currenxy and weather data
+    // starts functions for loading country and currency data
     init() {
         this.countriesLoad();
         this.currenciesLoad();
@@ -16,7 +16,8 @@ class Controller {
         .then(function(data) {   
             countries = data;
             console.log(countries);
-            controller.weatherLoad();
+            //controller.weatherLoad();
+            //controller.currenciesLoad();
             view.selectCity();
         })
         .catch(error => alert(error))
@@ -28,17 +29,16 @@ class Controller {
         .then(response => response.json())
         .then(function(data) {   
             exchangeRates = data;
-            console.log(exchangeRates);
             currencyKeys = Object.keys(exchangeRates.conversion_rates);
+            console.log(exchangeRates);    
             view.selectCurrency();
         })
         .catch(error => alert(error))
     }
 
     // loads 5 days weather forecast data from openweathermap.org and stores in array weather
-    weatherLoad() {
-        //let url = this. weatherURL();
-        model.weatherLoad()
+    weatherLoad(cityIndex) {
+        model.weatherLoad(countries[cityIndex].id)
         .then(response => response.json())
         .then(function(data) {   
             weather = data;
@@ -53,7 +53,14 @@ class Controller {
     }
     
     // process currency exchange to the currency of the selected city
-    currencyExchange(currency) {
-    }
-    
+    currencyExchange(fromAmount, fromCurrency, cityIndex) {
+
+        let toAmount = 0;
+
+        toAmount = (fromAmount / 
+                    exchangeRates.conversion_rates[fromCurrency].valueOf() *
+                    exchangeRates.conversion_rates[countries[cityIndex].currency]);
+
+        view.showExchange(toAmount.toFixed(2));
+    }   
 }
