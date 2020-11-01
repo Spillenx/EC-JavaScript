@@ -38,7 +38,8 @@ class Controller {
     weatherLoad(cityIndex) {
         model.weatherLoad(countries[cityIndex].id)
         .then(response => response.json())
-        .then(function(data) { 
+        .then(function(data) {
+            console.log(data); 
             view.showWeather(data);
         })
         .catch(error => alert(error))
