@@ -16,8 +16,6 @@ class Controller {
         .then(function(data) {   
             countries = data;
             console.log(countries);
-            //controller.weatherLoad();
-            //controller.currenciesLoad();
             view.selectCity();
         })
         .catch(error => alert(error))
@@ -40,9 +38,8 @@ class Controller {
     weatherLoad(cityIndex) {
         model.weatherLoad(countries[cityIndex].id)
         .then(response => response.json())
-        .then(function(data) {   
-            weather = data;
-            console.log(weather);
+        .then(function(data) { 
+            view.showWeather(data);
         })
         .catch(error => alert(error))
     }
@@ -55,11 +52,9 @@ class Controller {
     // process currency exchange to the currency of the selected city
     currencyExchange(fromAmount, fromCurrency, cityIndex) {
 
-        let toAmount = 0;
-
-        toAmount = (fromAmount / 
-                    exchangeRates.conversion_rates[fromCurrency].valueOf() *
-                    exchangeRates.conversion_rates[countries[cityIndex].currency]);
+        let toAmount = (fromAmount * 
+                        exchangeRates.conversion_rates[countries[cityIndex].currency]) / 
+                        exchangeRates.conversion_rates[fromCurrency].valueOf();
 
         view.showExchange(toAmount.toFixed(2));
     }   
