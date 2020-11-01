@@ -61,7 +61,6 @@ class View {
         let startIndex = 0;
         for(let i = 0; i < data.list.length; i++) {
             if(htmlDate == data.list[i].dt_txt) {
-                alert(i)
                 startIndex = i;
             }
         }
