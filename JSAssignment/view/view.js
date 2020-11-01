@@ -13,7 +13,6 @@ class View {
         for (let i = 0; i < currencyKeys.length; i++) {
             currencyList += '<option value="' + currencyKeys[i] + '">' + currencyKeys[i] + '</option>';
         }
-        
         Helper.setHtml('exchange-from', currencyList);
     }
 
@@ -26,34 +25,55 @@ class View {
         Helper.setHtml('city-container', htmlCity);
         Helper.setHtml('current-currency', countries[cityIndex].currency);
 
-        this.showWeather(cityIndex);
+        controller.weatherLoad(cityIndex);
 
         Helper.show('city-container');
         Helper.show('weather-container');
         Helper.show('exchange-container');
     }
 
-    showWeather(cityIndex) {
-
-        controller.weatherLoad(cityIndex);
-
-        let htmlWeather = 'Weather at 12.00 PM local time: <br><br>';
+    showWeather(data) {
+        let htmlWeather = 'Weather forecast: <br><br>';
         //"http://openweathermap.org/img/wn/" + icon + "@2x.png"
         //htmlWeather += '<img src="http://openweathermap.org/img/wn/' + weather.list[cityIndex].weather[0].icon + '@2x.png"><br>';
         //htmlWeather += weather.list[cityIndex].main.temp;
 
         var dt = new Date();
-        dt.setHours(12,0,0,0);
-        var dayIndex = 0;
+        //dt.setHours(12,0,0,0);
 
-        for(let i = 0; i < 5; i++) {
+        // "2020-11-01 03:00:00"
+        let htmlDate = '';
+        htmlDate += dt.getFullYear(dt) + '-';
+
+        if(dt.getMonth(dt) < 10){
+            htmlDate += '0';
+        }
+        htmlDate += (dt.getMonth(dt) + 1) + '-';
+
+        if(dt.getDate(dt) < 10){
+            htmlDate += '0';
+        };
+        htmlDate += dt.getDate(dt) + ' ';
+        htmlDate += '12:00:00';
+
+        console.log(data)
+
+        let startIndex = 0;
+        for(let i = 0; i < data.list.length; i++) {
+            if(htmlDate == data.list[i].dt_txt) {
+                alert(i)
+                startIndex = i;
+            }
+        }
+        
+        for(let i = startIndex; i < data.list.length; i += 8) {
             htmlWeather += this.showDay(dt.getDay(dt)) + ' ';
             htmlWeather += dt.getDate(dt) + ' ';
             htmlWeather += this.showMonth(dt.getMonth(dt)) + ' <br>';
-            //htmlWeather += '<img src="http://openweathermap.org/img/wn/' + weather.list[dayIndex].weather.icon + '@2x.png"><br>';
-            //htmlWeather += 'Weather: ' + weather[dayIndex].list.weather.description + '<br>';
-            //htmlWeather += 'Temperature : ' + weather.list[dayIndex].main.temp + '<br><br>';
-            dayIndex += 8;
+            htmlWeather += 'Date and time: ' + data.list[i].dt_txt + '<br>';
+            htmlWeather += '<img src="http://openweathermap.org/img/wn/' + data.list[i].weather[0].icon + '@2x.png"><br>';
+            htmlWeather += 'Weather: ' + data.list[i].weather[0].description + '<br>';
+            htmlWeather += 'Temperature : ' + data.list[i].main.temp + '<br><br>';
             dt.setDate(dt.getDate() + 1)
         }
 
