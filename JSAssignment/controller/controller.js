@@ -58,5 +58,113 @@ class Controller {
                         exchangeRates.conversion_rates[fromCurrency].valueOf();
 
         view.showExchange(toAmount.toFixed(2));
-    }   
+    }
+    
+    // formatting the date to openweathermap's dt_txt format
+    formatDate(dt) {
+        // "2020-11-01 03:00:00"
+        let htmlDate = '';
+
+        htmlDate += dt.getFullYear(dt) + '-';
+
+        if(dt.getMonth(dt) < 10){
+            htmlDate += '0';
+        }
+        htmlDate += (dt.getMonth(dt) + 1) + '-';
+
+        if(dt.getDate(dt) < 10){
+            htmlDate += '0';
+        };
+        htmlDate += dt.getDate(dt) + ' ';
+
+        if(dt.getHours(dt) < 10) {
+            htmlDate += '0';
+        };
+        htmlDate += dt.getHours(dt) + ':';
+            
+        if(dt.getMinutes(dt) < 10) {
+            htmlDate += '0';
+        };
+        htmlDate += dt.getMinutes(dt) + ':';
+
+        if(dt.getSeconds(dt) < 10) {
+            htmlDate += '0';
+        };
+        htmlDate += dt.getSeconds(dt);
+
+        return htmlDate;
+    }
+
+    // convert day to name of weekday
+    showDay(dtDay) {
+        let day = '';
+        switch (dtDay){
+            case 0:
+                day = 'Sunday';
+                break;
+            case 1:
+                day = 'Monday';
+                break;
+            case 2:
+                day = 'Tuesday';
+                break;
+            case 3:
+                day = 'Wednesday';
+                break;
+            case 4:
+                day = 'Thursday';
+                break;
+            case 5:
+                day = 'Friday';
+                break;
+            case 6:
+                day = 'Saturday';
+                break;
+        }
+        return day;
+    }
+
+    // convert month to name of month
+    showMonth(dtMonth) {
+        let month = '';
+        switch (dtMonth){
+            case 0:
+                month = 'January';
+                break;
+            case 1:
+                month = 'February';
+                break;
+            case 2:
+                month = 'March';
+                break;
+            case 3:
+                month = 'April';
+                break;
+            case 4:
+                month = 'May';
+                break;
+            case 5:
+                month = 'June';
+                break;
+            case 6:
+                month = 'July';
+                break;
+            case 7:
+                month = 'August';
+                break;
+            case 8:
+                month = 'September'
+                break;    
+            case 9:
+                month = 'October';
+                break;
+            case 10:
+                month = 'November';
+                break;
+            case 11:
+                month = 'Decemer';
+                break;
+        }
+        return month;
+    }
 }
