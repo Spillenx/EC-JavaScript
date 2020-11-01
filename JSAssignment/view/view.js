@@ -52,15 +52,20 @@ class View {
         }
         
         // show 5 day forecast at 12.00 local time
-        let htmlWeather = 'Weather forecast: <br><br>';
+        let htmlWeather = 'Weather forecast:';
         for(let i = startIndex; i < data.list.length; i += 8) {
+   
+            htmlWeather += '<div class="weather-item">';
             htmlWeather += this.showDay(dt.getDay(dt)) + ' ';
             htmlWeather += dt.getDate(dt) + ' ';
             htmlWeather += this.showMonth(dt.getMonth(dt)) + ' <br>';
             htmlWeather += 'Date and time: ' + data.list[i].dt_txt + '<br>';
-            htmlWeather += '<img src="http://openweathermap.org/img/wn/' + data.list[i].weather[0].icon + '@2x.png"><br>';
             htmlWeather += 'Weather: ' + data.list[i].weather[0].description + '<br>';
-            htmlWeather += 'Temperature : ' + data.list[i].main.temp.toFixed(1) + '<br><br>';
+            htmlWeather += 'Temperature : ' + data.list[i].main.temp.toFixed(1) + '&#8451;<br><br>';
+            htmlWeather += '<img src="http://openweathermap.org/img/wn/' + data.list[i].weather[0].icon + '@2x.png"><br>';
+            htmlWeather += '</div>';
+
+            
             dt.setDate(dt.getDate() + 1)
         }
         Helper.setHtml('weather-container', htmlWeather);
