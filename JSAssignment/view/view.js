@@ -44,7 +44,7 @@ class View {
         // find the index with the time 12:00:00
         let startIndex = 0;
         for(let i = 0; i < data.list.length; i++) {
-
+            
             if(data.list[i].dt_txt.indexOf('12:00') != -1 && startIndex == 0) {
                 startIndex = i;
             }
