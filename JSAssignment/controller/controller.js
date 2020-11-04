@@ -162,7 +162,7 @@ class Controller {
                 month = 'November';
                 break;
             case 11:
-                month = 'Decemer';
+                month = 'December';
                 break;
         }
         return month;
