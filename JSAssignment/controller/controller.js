@@ -1,7 +1,5 @@
 class Controller {
 
-    constructor() {}
-
     // starts functions for loading country and currency data
     init() {
         this.countriesLoad();
@@ -96,7 +94,7 @@ class Controller {
     }
 
     // convert day to name of weekday
-    showDay(dtDay) {
+    formatDay(dtDay) {
         let day = '';
         switch (dtDay){
             case 0:
@@ -125,7 +123,7 @@ class Controller {
     }
 
     // convert month to name of month
-    showMonth(dtMonth) {
+    formatMonth(dtMonth) {
         let month = '';
         switch (dtMonth){
             case 0:

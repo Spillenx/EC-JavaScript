@@ -60,9 +60,9 @@ class View {
 
             htmlWeather += '<div class="weather-item">';
                 htmlWeather += '<div class="weather-header">';
-                    htmlWeather += controller.showDay(dt.getDay(dt)) + ' ';
+                    htmlWeather += controller.formatDay(dt.getDay(dt)) + ' ';
                     htmlWeather += dt.getDate(dt) + ' ';
-                    htmlWeather += controller.showMonth(dt.getMonth(dt)) + ' ';
+                    htmlWeather += controller.formatMonth(dt.getMonth(dt)) + ' ';
                     htmlWeather += dt.getHours(dt) + ':' + dt.getMinutes(dt);
                         if(dt.getMinutes(dt) < 10){
                             htmlWeather += '0';
@@ -70,9 +70,8 @@ class View {
                 htmlWeather += '</div>';
                 htmlWeather += '<div class="weather-body">';
                     htmlWeather += '<div class="weather-info">';
-                    htmlWeather += 'Weather: ' + data.list[i].weather[0].description + '<br>';
+                    htmlWeather += 'Weather: ' + data.list[i].weather[0].main + '<br>';
                     htmlWeather += 'Temperature: ' + data.list[i].main.temp.toFixed(1) + '&#8451;<br>';
-                    //htmlWeather += 'Date and time: ' + data.list[i].dt_txt;
                 htmlWeather += '</div>';
                 htmlWeather += '<img src="http://openweathermap.org/img/wn/' + data.list[i].weather[0].icon + '@2x.png">';
                 htmlWeather += '</div>';
