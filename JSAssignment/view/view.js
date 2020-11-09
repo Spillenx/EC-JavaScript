@@ -42,43 +42,37 @@ class View {
     // show weather from the selected city
     showWeather(data) {
 
-        // find the index with the time 12:00:00
-        let startIndex = 0;
-        for(let i = 0; i < data.list.length; i++) {
-
-            if(data.list[i].dt_txt.indexOf('12:00') != -1 && startIndex == 0) {
-                startIndex = i;
-            }
-        }
+        console.log(data)
         
         // show 5 day forecast at 12.00 local time
         //let htmlWeather = 'Weather forecast:';
         let htmlWeather = '';
-        for(let i = startIndex; i < data.list.length; i += 8) {
+        for(let i = 0; i < data.length; i++) {
    
-            var dt = new Date(data.list[i].dt_txt);
+            let dt = new Date(data[i].dt_txt);
 
             htmlWeather += '<div class="weather-item">';
-                htmlWeather += '<div class="weather-header">';
-                    htmlWeather += controller.formatDay(dt.getDay(dt)) + ' ';
-                    htmlWeather += dt.getDate(dt) + ' ';
-                    htmlWeather += controller.formatMonth(dt.getMonth(dt)) + ' ';
-                    htmlWeather += dt.getHours(dt) + ':' + dt.getMinutes(dt);
-                        if(dt.getMinutes(dt) < 10){
-                            htmlWeather += '0';
-                        }
-                htmlWeather += '</div>';
-                htmlWeather += '<div class="weather-body">';
-                    htmlWeather += '<div class="weather-info">';
-                    htmlWeather += 'Weather: ' + data.list[i].weather[0].main + '<br>';
-                    htmlWeather += 'Temperature: ' + data.list[i].main.temp.toFixed(1) + '&#8451;<br>';
-                htmlWeather += '</div>';
-                htmlWeather += '<img src="http://openweathermap.org/img/wn/' + data.list[i].weather[0].icon + '@2x.png">';
-                htmlWeather += '</div>';
+            htmlWeather += '<div class="weather-header">';
+            htmlWeather += controller.formatDay(dt.getDay(dt)) + ' ';
+            htmlWeather += dt.getDate(dt) + ' ';
+            htmlWeather += controller.formatMonth(dt.getMonth(dt)) + ' ';
+            htmlWeather += dt.getHours(dt) + ':' + dt.getMinutes(dt);
+                if(dt.getMinutes(dt) < 10){
+                    htmlWeather += '0';
+                }
+            htmlWeather += '</div>';
+            htmlWeather += '<div class="weather-body">';
+            htmlWeather += '<div class="weather-info">';
+            htmlWeather += 'Weather: ' + data[i].weather[0].main + '<br>';
+            htmlWeather += 'Temperature: ' + data[i].main.temp.toFixed(1) + '&#8451;<br>';
+            htmlWeather += '</div>';
+            htmlWeather += '<img src="http://openweathermap.org/img/wn/' + data[i].weather[0].icon + '@2x.png">';
+            htmlWeather += '</div>';
             htmlWeather += '</div>';
             
             dt.setDate(dt.getDate() + 1)
         }
+        
         Helper.setHtml('weather-container', htmlWeather);
     }
 

@@ -33,12 +33,14 @@ class Controller {
     }
 
     // loads 5 days weather forecast data from openweathermap.org and stores in array weather
+    // only stores the indexes for weather at 12:00:00
     weatherLoad(cityIndex) {
         model.weatherLoad(countries[cityIndex].id)
         .then(response => response.json())
         .then(function(data) {
-            console.log(data); 
-            view.showWeather(data);
+            console.log(data.list);
+            const weatherData = data.list.filter(data => data.dt_txt.indexOf('12:00:00') != -1)
+            view.showWeather(weatherData);
         })
         .catch(error => alert(error))
     }
